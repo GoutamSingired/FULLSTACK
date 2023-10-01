@@ -11,6 +11,6 @@ app.use(cors());
 const allRoutes = require('../server/routes/product.routes')
 allRoutes(app);
 
-app.listen(4500, (req, res) => {
+app.listen(4500, () => {
     console.log("server is started at 4500")
 })

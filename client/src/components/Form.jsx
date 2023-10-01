@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 
-const Form = () => {
+const Form = (props) => {
+    const {products, setProducts} = props;
+
     const [title, setTitle] = useState(" ")
     const [price, setPrice] = useState(" ")
     const [description, setDescription] = useState(" ")
@@ -10,10 +12,11 @@ const Form = () => {
         e.preventDefault();
         
         const newProduct = {title, price, description }
-        console.log(newProduct)
+        //console.log(newProduct)
         axios.post('http://localhost:4500/product/new', {newProduct})
             .then(res => {
-                console.log(res)
+                //console.log(res)
+                setProducts([...products, res.data])
             })
             .catch(err => {console.log("The error is", err)})
         setTitle(" ");
@@ -21,13 +24,8 @@ const Form = () => {
         setDescription(" ");
     }
 
-    // useEffect(() => {
-        
-    // },[])
-
     return(
         <>
-
             <form onSubmit={createProduct}>
                 <div>
                     <label>Title</label>
@@ -43,7 +41,6 @@ const Form = () => {
                 </div>
                 <input type="submit" value="Create"></input>
             </form>
-
         </>
     )
 

@@ -4,7 +4,6 @@ const ProductSchema = new mongoose.Schema(
     {
         title: {
             type: String
-    
         },
         price: {
             type: String
@@ -14,8 +13,7 @@ const ProductSchema = new mongoose.Schema(
             type: String
             //required: [true, "please give the description"]
         }
-    },
-    { timestamps: true }
+    },{ timestamps: true }
 )
 
 const Product = mongoose.model('Product', ProductSchema)
