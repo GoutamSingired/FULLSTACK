@@ -18,11 +18,17 @@ module.exports = {
         Product.findOne({_id: req.params.id})
             .then(oneProduct => res.json(oneProduct))
             .catch(err => {res.json("cant get one", err)})
+    },
+    updateOneProduct: (req, res) => {
+        console.log("hello", req.body)
+        Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
+            .then(updateOne => res.json(updateOne))
+            .catch(err => console.log(err))
+    },
+    deleteOneProduct: (req, res) => {
+        console.log(req.params.id)
+        Product.deleteOne({_id: req.params.id})
+            .then(deleteProduct => res.json(deleteProduct))
+            .catch(err => console.log(err))
     }
-    // deleteOneProduct: (req, res) => {
-    //     console.log(req.params.id)
-    //     Product.deleteOne({_id: req.params.id})
-    //         .then(deleteOne => res.json(deleteOne))
-    //         .catch(err => console.log(err))
-    // }
 }

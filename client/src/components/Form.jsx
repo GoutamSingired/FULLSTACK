@@ -28,15 +28,15 @@ const Form = (props) => {
         <>
             <form onSubmit={createProduct}>
                 <div>
-                    <label>Title</label>
+                    <label>Title:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div>
-                    <label>Price</label>
+                    <label>Price:</label>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text"  value={price} onChange={(e) => setPrice(e.target.value)} />
                 </div>
                 <div>
-                    <label>Description</label>
+                    <label>Description:</label>&nbsp;
                     <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <input type="submit" value="Create"></input>
