@@ -10,8 +10,8 @@ module.exports = {
     createProducts: (req, res) => {
         console.log("body", req.body.newProduct)
         Product.create(req.body.newProduct)
-            .then(newProduct => {res.json(newProduct)})
-            .catch(err => {res.json("cant be created", err)}) 
+            .then(newProduct => {res.status(200).json(newProduct)})
+            .catch(err => {res.status(500).json(err), console.log(err)}) 
     },
     getOneProduct: (req, res) => {
         console.log(req.params.id)
@@ -21,9 +21,9 @@ module.exports = {
     },
     updateOneProduct: (req, res) => {
         console.log("hello", req.body)
-        Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
-            .then(updateOne => res.json(updateOne))
-            .catch(err => console.log(err))
+        Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators:true})
+            .then(updateOne => res.status(200).json(updateOne))
+            .catch(err => { res.status(500).json(err), console.log(err)} )
     },
     deleteOneProduct: (req, res) => {
         console.log(req.params.id)
